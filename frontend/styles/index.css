@@ -1,0 +1,245 @@
+
+body {
+    background: #2C2D30;
+    color: white;
+}
+header {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+header h1 {
+    font-size: 65px;
+}
+img {
+    width: 75px;
+    height: 75px;
+}
+h5 {
+    margin-bottom: 35px;
+}
+.form-floating {
+    color: grey;
+}
+.form-floating>.form-control {
+    border-radius: 40px;
+}
+.form-floating>label {
+    left: 10px;
+}
+
+.btn-success{
+    margin-top: 30px;
+    border-radius: 40px;
+    font-size: 20px;
+    height: 60px;
+    background: #2DB555;
+}
+
+main {
+    margin: 5% 25%;
+}
+main h5  {
+    text-align: center;
+}
+main .email {
+    text-align: center;
+}
+
+#GoToSignup {
+    margin-top: 15px;
+    position: absolute;
+    right: 25%;
+    color: grey;
+}
+#BackToLogin {
+    margin-top: 15px;
+    position: absolute;
+    right: 25%;
+    color: grey;
+}
+
+.navbar {
+    background-color: #49CC90;
+    border-radius: 8px;
+    border-color: #2C2D30;
+}
+.navbar-brand {
+    color: white;
+}
+#create-channel {
+    margin-right: 1rem;
+}
+.custom-alert {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.custom-alert-content {
+    position: absolute;
+    top:30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: rgba(0,0,0,0.5);
+    border: 1px solid #888;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#custom-alert-close {
+    margin-top: 10px;
+    display: block;
+}
+
+
+
+.new-channel {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000; 
+}
+
+/* Modal Content */
+.popup-content {
+    position: relative;
+    background-color: rgba(0,0,0,0.5);
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%; 
+}
+.newchannel-close {
+    color: #aaaaaa;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.newchannel-close:hover,
+.newchannel-close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+footer {
+    position: absolute;
+    bottom: 0px;
+}
+
+.scrolling-div {
+    width: 100%;        /* or any other width */
+    height: 25em;       /* this sets the height of the scrolling area */
+    overflow-y: auto;    /* this adds the scrollbar when content exceeds the div's height */
+    border: 1px solid #ccc; /* just for visualization */
+}
+.card {
+    background-color: #FAFAFA;
+}
+.fixed-box {
+    position: sticky;
+    top: 0; 
+    background-color: #f5f5f5; 
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    display: none;
+}
+.dropdown-menu {
+    width: 25rem;
+    height: 12rem;
+    overflow-y: auto;
+
+}
+
+#dropdown-input {
+    width: 20rem;
+    height: 3rem;
+}
+
+#navbar-dashboard:hover {
+    text-decoration: underline;
+}
+
+.dropdown-wrapper {
+    position: relative;
+    display: inline-block; /* To make the wrapper as wide as its content */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%; /* This positions the dropdown right below the button */
+    left: 0;
+    z-index: 1; /* Ensures the dropdown appears above other content */
+    /* Add additional styling for the dropdown container if desired */
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+.thumbnail {
+    width: 75px;  /* Set the width of the thumbnails */
+    height: auto;
+    margin: 10px;
+    border: 1px solid #ccc;
+    transition: transform 0.2s;
+}
+.thumbnail:hover {
+    transform: scale(1.1);
+}
+
+.profileImg {
+    width: 40px;  /* Set the width of the thumbnails */
+    height: auto;
+    border: 1px solid #ccc;
+    margin: 0px 10px 10px 0px;
+}
+
+.image-modal {
+    display: none;  /* Hidden by default */
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1;
+}
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    max-width: 90%;
+    height: auto;
+    max-height: 90%;
+}
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}

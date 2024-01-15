@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Slackr</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- You can add your styles and scripts here -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" media="screen" href="styles/provided.css" />
+  <link rel="stylesheet" href="styles/index.css">
+  <script type="module" src="src/helpers.js"></script>
+</head>
+
+<body>
+  <!-- This is an example app structure, you can modify this as much as you choose -->
+  <header class="banner">
+    <img src="src/logo-slack.png" alt="logo-slack">
+    <h1>Slackr</h1>
+  </header>
+  <main role="main">
+    <!-- app goes here -->
+    <!-- page login -->
+    <div class="page-login page-block" id="page-login">
+      <h5>Log in</h5>
+      <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="login-email" placeholder="name@example.com" value="evanchen@gmail.com">
+        <label for="login-email">Email address</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="login-password" placeholder="Password" value="qwe123">
+        <label for="login-password">Password</label>
+      </div>
+
+      <div class="d-grid gap-2">
+        <button class="btn btn-success" type="button" id="login-submit">login</button>
+      </div>
+      <div id="GoToSignup">
+        <span>new member? sign up now!</span>
+      </div>      
+    </div>
+    <!-- page register -->
+    <div class="page-signup page-block" id="page-signup">
+      <h5>Sign up</h5>
+
+      <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="register-email" placeholder="name@example.com" value="evanchen@gmail.com">
+        <label for="register-email">Email address</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="name" class="form-control" id="register-name" placeholder="name" value="evan">
+        <label for="register-name">Name</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="password" class="form-control" id="register-password" placeholder="Password" value="qwe123">
+        <label for="register-password">Password</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="register-password-confirm" placeholder="Confirm Password" value="qwe123">
+        <label for="register-password-confirm">Confirm Password</label>
+      </div>
+      <div class="d-grid gap-2">
+        <button class="btn btn-success" type="button" id="register-submit">sign up</button>
+      </div> 
+      <div id="BackToLogin">
+        <span>Back to Login</span>
+      </div>  
+    </div>
+    <!-- page dashboard -->
+    <div class="dashboard" id="page-dashboard">
+      <!-- dashboard <button id="logout">logout</button> -->
+      <nav class="navbar page-block" id="page-nav-dashboard">
+        <div class="container-fluid" >
+          <div>
+            <a class="navbar-brand" id="navbar-dashboard">Dashboard</a>
+            <a class="navbar-brand" id="navbar-user-profile">Profile</a>
+          </div>
+          <form class="d-flex">
+            <button class="btn btn-outline-primary" id="create-channel">create channel</button>
+            <button class="btn btn-outline-secondary" id="logout" type="submit">logout</button>
+          </form>
+        </div>
+      </nav>
+      <div id="page-dashboard-channels" class="page-block"></div>
+      <!-- page new channel view -->
+      <div class="page-block" id="page-channel-view">
+        <div class="card" style="width: 100%;">
+
+          
+          <div class="card scrolling-div" style="width:100%;">
+            <div class="fixed-box" id="fixed-box">
+              <span id="pinned-box" class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">📌 Pinned</span>
+              <ul class="dropdown-menu" id="dropdown-list">
+                <!-- <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li> -->
+              </ul>
+            </div>
+            <div class="card-body" id="channel-profile">
+              <h4 class="card-title" id="channel-name">Channel view</h4>
+              <h6 class="card-subtitle mb-2 text-body-secondary" id="channel-info"></h6>
+              <span class="card-text" id="channel-description">You are not a member yet! Join us~</span>
+              
+              <a href="#" id="join-channel" class="card-link">join</a>
+              <a href="#" id="leave-channel" class="card-link">leave</a>
+              <a href="#" id="edit-channel" class="card-link">edit</a>
+              
+              <div class="dropdown-wrapper" id="invite-members">
+                <button id="addUserButton" class="btn btn-sm btn-outline-success">
+                  Invite members
+                </button>
+                <div id="userDropdownContainer" class="dropdown-content" style="display: none;">
+                  <select id="usersDropdown" multiple></select>
+                </div>
+              </div> 
+              
+            </div>
+            <div id="message-container" >
+              <p>message</p>
+            </div>
+          </div>
+          <div class="input-group" id="message-input">
+            <input type="text" class="form-control" placeholder="Message" id="message-text">
+            <button class="btn btn-outline-secondary" id="input-text" type="button">T</button>
+            <button class="btn btn-outline-secondary" id="upload-image" type="button">+</button>
+            <button class="btn btn-outline-secondary" id="message-submit" type="button">Send</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    
+    <!-- custom alert -->
+    <div id="customAlert" class="custom-alert">
+      <div class="custom-alert-content">
+          <span id="custom-alert-text">Your alert message here.</span>
+          <button id="custom-alert-close">Close</button>
+      </div>
+    </div>
+    
+    <!-- pop up form for creating new channel -->
+    <!-- Users should be able to enter the name, an optional description, and public/private channel type. -->
+    <div id="page-create-channel" class="new-channel page-block">
+      <!-- Modal content -->
+      <div class="popup-content">
+        <span class="newchannel-close">&times;</span>
+        <h6>Create a channel</h6>
+        <form id="myForm">
+          <label for="name">Name:</label>
+          <input type="text" id="new-channel-name" name="name"><br><br>
+          <label for="description">Discription:</label>
+          <textarea name="description" id="description" cols="20" rows="5" placeholder="(opitonal)"></textarea><br>
+          <div class="form-check">
+            <div>
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="public">
+              <label class="form-check-label" for="public">
+                Public
+              </label>
+            </div>
+            <div>
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="private">
+              <label class="form-check-label" for="private">
+                Private
+              </label> 
+            </div>
+          </div>
+          <br>
+          <input type="submit" value="Submit" id="new-channel-submit">
+        </form>
+      </div>
+    </div>
+
+    <!-- pop up form for editing channel -->
+    <div id="page-edit-channel" class="new-channel page-block">
+      <!-- Modal content -->
+      <div class="popup-content">
+        <span class="newchannel-close">&times;</span>
+        <h6>Edit channel</h6>
+        <form>
+          <label for="name">Name:</label>
+          <input type="text" id="edit-channel-name" style="width: 95%;" name="name"><br><br>
+          <label for="description">Description:</label>
+          <textarea name="description" id="edit-description" cols="20" rows="5" style="width: 95%;" placeholder="(opitonal)"></textarea><br>
+          <input type="submit" value="Submit" id="edit-channel-submit" style="width: 80%;">
+        </form>
+      </div>
+    </div>
+
+    <div class="page-block" id="page-user-profile">
+      
+      <div id="page-user-profile-photo"><img src="" alt="usr-profile" id="profile-photo"> <input type="file">    <button>edit photo</button></div>
+      <div id="page-user-profile-name"><h3 id="profile-name">username</h3> <input type="text" placeholder="enter new name">      <button>edit name</button></div>
+      <div id="page-user-profile-bio"><p id="profile-bio">userbio</p> <input type="text" placeholder="enter new bio"> <button>edit bio</button></div>
+      <div id="page-user-profile-email"><span id="profile-email">email</span> <input type="text" placeholder="enter new email"> <button>edit email</button></div>
+      
+      <div style="display: none;" id="profile-password">
+        <input type="password" placeholder="enter new password" id="user-profile-pwd"> <button>submit</button>
+        <input type="checkbox" onclick="myFunction()" id="pwd-type-select">Show Password
+      </div>
+      
+      <a href="#">back to channel view</a>
+    </div>
+
+    <div id="image-modal" class="image-modal">
+      <span class="close" id="image-close">&times;</span>
+      <img class="modal-content" id="modal-image" alt="close">
+    </div>
+
+
+
+  </main>
+  <footer>
+    <p>&copy; Slackr</p>
+  </footer>
+  <script>
+    function myFunction() {
+      const x = document.getElementById("user-profile-pwd");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+  }
+
+  </script>
+  <script type="module" src="src/main.js"></script>
+</body>
+
+</html>
